@@ -1,0 +1,12 @@
+.error-page {
+	text-align: center;
+}
+
+.error-page__message {
+	color: red
+}
+
+.router-error__img {
+	width: 45%;
+	height: 45%;
+}

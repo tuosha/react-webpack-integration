@@ -1,0 +1,14 @@
+.use-effects {
+	text-align: center;
+}
+.use-effects__msg {
+	margin-left: 20px
+}
+.use-effects__msg--alert {
+	color: blue;
+	font-weight: lighter;
+}
+.use-effects__msg--final {
+	color: red;
+	font-weight: bold;
+}
