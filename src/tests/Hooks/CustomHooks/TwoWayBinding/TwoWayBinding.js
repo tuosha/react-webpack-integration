@@ -20,7 +20,7 @@ const TwoWayBinding = () => {
 		<>
 			<h2>{model.value}</h2>
 			<input {...model}/>
-			<button onClick={reset}>Reset</button>
+			<button className={"btn btn-primary"} onClick={reset}>Reset</button>
 		</>
 	)
 }
