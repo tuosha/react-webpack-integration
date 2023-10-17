@@ -16,8 +16,6 @@ const cssLoaders = (loader) => {
 	},
 	{
 		loader: 'css-loader',
-		options: {
-		},
 	}]
 	if (loader){
 		loaders.push(loader)
