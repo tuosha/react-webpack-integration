@@ -9,7 +9,7 @@ export const Item = ({ item, handleDelete, options }) => {
 				<span key={nanoid()}>{checkInnerRecords(val)}</span>
 			)}
 			{(deleteBtn) ?
-			 <button onClick={() => handleDelete(item.id)}>Delete</button> : ''}
+			 <button className={'btn btn-danger'} onClick={() => handleDelete(item.id)}>Delete</button> : ''}
 		</li>
 	return (
 		records
