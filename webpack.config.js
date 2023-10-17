@@ -14,8 +14,11 @@ const cssLoaders = (loader) => {
 	const loaders = [{
 		loader: MiniCssExtractPlugin.loader,
 	},
-		'css-loader',
-	]
+	{
+		loader: 'css-loader',
+		options: {
+		},
+	}]
 	if (loader){
 		loaders.push(loader)
 	}
@@ -34,8 +37,8 @@ const plugins = () => {
 		new CopyPlugin({
 			patterns: [
 				{
-					from: path.resolve(__dirname, 'src/images/flavicons'),
-					to: path.resolve(__dirname, 'dist'),
+					from: path.resolve(__dirname, 'src/images/'),
+					to: path.resolve(__dirname, 'dist/assets/'),
 				},
 			],
 		}),
@@ -90,7 +93,7 @@ module.exports = {
 	devtool: isDev ? 'source-map' : false,
 	target: isDev ? "web" : "browserslist",
 	entry: {
-		main: './index.js',
+		bundle: './index.js',
 	},
 	output: {
 		filename: fileName('js'),
@@ -98,14 +101,14 @@ module.exports = {
 		clean: true,
 	},
 	resolve: {
-		extensions: ['.js', '.tsx', '.ts', '.xml', '.csv', '.png', '.less'],
+		extensions: ['.js', '.tsx', '.ts', '.xml', '.csv', '.png', '.less', '.css'],
 		alias: {
 			'@styles': path.resolve(__dirname, 'src/styles'),
-			'@data': path.resolve(__dirname, 'src/assets/testFiles'),
 			'@': path.resolve(__dirname, 'src')
 		},
 	},
 	devServer: {
+		historyApiFallback: true,
 		port: 3001,
 		hot: true,
 		allowedHosts: ['all'],
@@ -116,7 +119,7 @@ module.exports = {
 		rules: [
 			{
 				test: /\.css$/,
-				use: cssLoaders()
+				use: cssLoaders(),
 			},
 			{
 				test: /\.less$/,
