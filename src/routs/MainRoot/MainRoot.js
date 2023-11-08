@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '../../components/App/App'
-import RouterErrorPage from '../../components/RouterErrorPage/RouterErrorPage'
+import RouterErrorPage from '../RouterErrorPage/RouterErrorPage'
 import PersonsList from '../../components/PersonsList/PersonsList'
 import PlanetsList from '../../components/PlanetsList/PlanetsList'
 

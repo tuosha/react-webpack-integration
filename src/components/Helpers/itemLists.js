@@ -1,25 +1,32 @@
 import { compose } from '../../utils/utils'
-import { withData, withListOptions, withSpinner } from './HOCHelpers'
+import { withData, withSpinner, withDataFilter, withListOptions } from './HOCHelpers'
 import { getAllPersons, getAllPlanets } from '../../data/getDataApi'
 import ItemsList from '../ItemsList/ItemsList'
 import Spinner from '../Spinner/Spinner/Spinner'
 import NewSpinner from '../Spinner/NewSpinner/NewSpinner'
+import {
+	personsFilteredData,
+	planetsFilteredData,
+} from '../../services/Filters/viewPersonDataFilter'
+import { defaultListOptions } from '../../services/Filters/listOptions'
 
 const PersonListWithDataAndSpinner =
-  compose(
-	withData(getAllPersons),
-	withSpinner(Spinner),
-	withListOptions({deleteBtn: true})
-  )(ItemsList)
+	compose(
+		withData(getAllPersons),
+		withSpinner(Spinner),
+		withDataFilter(personsFilteredData),
+		withListOptions(defaultListOptions),
+	)(ItemsList)
 
 const PlanetsListWithDataAndSpinner =
-  compose(
-	withData(getAllPlanets),
-	withSpinner(NewSpinner),
-	withListOptions({deleteBtn: true})
-  )(ItemsList)
+	compose(
+		withData(getAllPlanets),
+		withSpinner(NewSpinner),
+		withDataFilter(planetsFilteredData),
+		withListOptions(defaultListOptions),
+	)(ItemsList)
 
 export {
 	PlanetsListWithDataAndSpinner,
-	PersonListWithDataAndSpinner
+	PersonListWithDataAndSpinner,
 }

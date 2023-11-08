@@ -1,7 +1,4 @@
-const _extractId = (item) => {
-	const idRegExp = /\/([0-9]*)\/$/;
-	return item.url.match(idRegExp)[1];
-};
+import { _extractId } from '../utils/utils'
 
 const _transformPersonData = (person) => {
 	return {
@@ -10,12 +7,12 @@ const _transformPersonData = (person) => {
 		birth_year: person.birth_year,
 		eye_color: person.eye_color,
 		gender: person.gender,
-		// films: person.films,
-		// hair_color: person.hair_color,
-		// height: person.height,
-		// homeworld: person.homeworld,
-		// mass: person.mass,
-		// skin_color: person.skin_color,
+		films: person.films,
+		hair_color: person.hair_color,
+		height: person.height,
+		homeworld: person.homeworld,
+		mass: person.mass,
+		skin_color: person.skin_color,
 		species: person.species,
 		starships: person.starships,
 		vehicles: person.vehicles
