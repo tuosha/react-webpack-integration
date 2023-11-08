@@ -1,4 +1,5 @@
 const path = require('path')
+const Dotenv = require('dotenv-webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -9,6 +10,7 @@ const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer')
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev
 const isBundleAnalyzer = process.env.NODE_ENV === 'bundle_analyzer'
+const isEslintErrors = process.env.NODE_ENV === 'eslint_errors'
 const fileName = ext => isDev ? `[name].${ext}` : `[name].[fullhash].${ext}`
 const cssLoaders = (loader) => {
 	const loaders = [{
@@ -25,30 +27,42 @@ const cssLoaders = (loader) => {
 const plugins = () => {
 	const basePlugins = [
 		new HtmlWebpackPlugin(
-			{
-				template: './index.html',
+			Object.assign({
+				template: path.resolve(__dirname, 'public/index.html'),
+				filename: 'index.html',
+			}, isDev || {
 				minify: {
-					collapseWhitespace: isProd
-				}
-			}
+					collapseWhitespace: isProd,
+					removeComments: isProd
+				},
+				apiUrl: ''
+			})
 		),
 		new CopyPlugin({
 			patterns: [
 				{
-					from: path.resolve(__dirname, 'src/images/'),
-					to: path.resolve(__dirname, 'dist/assets/'),
+					from: path.resolve(__dirname, 'public/'),
+					to: path.resolve(__dirname, 'dist'),
+					globOptions: {
+						ignore: ['**/index.*']
+					}
 				},
 			],
 		}),
 		new MiniCssExtractPlugin({
-			filename: fileName('css'),
+			filename: `static/css/${fileName('css')}`,
 		}),
 	]
 	if (isBundleAnalyzer) {
 		basePlugins.push(new BundleAnalyzerPlugin())
 	}
-	if (isDev) {
-		basePlugins.push(new ESLintPlugin())
+	if (isEslintErrors) {
+		basePlugins.push(new ESLintPlugin({
+			extensions: ['js','jsx','ts','tsx']
+		}))
+	}
+	if (isDev || isEslintErrors) {
+		basePlugins.push(new Dotenv())
 	}
 	return basePlugins
 }
@@ -94,14 +108,15 @@ module.exports = {
 		bundle: './index.js',
 	},
 	output: {
-		filename: fileName('js'),
-		path: path.resolve(__dirname, 'dist'),
+		filename: `static/js/${fileName('js')}`,
+		path: path.resolve(__dirname, 'dist/'),
+		assetModuleFilename: 'static/media/[name].[hash][ext]',
 		clean: true,
 	},
 	resolve: {
-		extensions: ['.js', '.tsx', '.ts', '.xml', '.csv', '.png', '.less', '.css'],
+		extensions: ['.js', '.tsx', '.ts', '.xml', '.csv', '.png', '.less', '.css', '.sass', '.scss'],
 		alias: {
-			'@styles': path.resolve(__dirname, 'src/styles'),
+			'@images': path.resolve(__dirname, 'src/assets/images'),
 			'@': path.resolve(__dirname, 'src')
 		},
 	},
