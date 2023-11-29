@@ -1,7 +1,3 @@
-.app {
-	text-align: center;
-}
-
 .app-header {
 	background-color: #282c34;
 	min-height: 10vh;
@@ -20,24 +16,6 @@
 
 .app-header__link {
 	color: #61dafb;
-}
-
-.app-footer {
-}
-
-@media (prefers-reduced-motion: no-preference) {
-	.app-header__logo {
-		animation: app-header__logo--spin infinite 20s linear;
-	}
-}
-
-@keyframes app-header__logo--spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(180deg);
-	}
 }
 
 

@@ -17,7 +17,6 @@ interface PersonDataProps {
     species: string,
     starships: Array<string>,
     vehicles: string
-
 }
 interface PlanetDataProps {
     id: number

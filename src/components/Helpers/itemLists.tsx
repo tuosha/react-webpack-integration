@@ -4,10 +4,7 @@ import { getAllPersons, getAllPlanets } from '../../data/getDataApi'
 import ItemsList from '../ItemsList/ItemsList'
 import Spinner from '../Spinner/Spinner/Spinner'
 import NewSpinner from '../Spinner/NewSpinner/NewSpinner'
-import {
-	personsFilteredData,
-	planetsFilteredData,
-} from '../../services/Filters/viewPersonDataFilter'
+import { personsFilteredData, planetsFilteredData } from '../../services/Filters/viewPersonDataFilter'
 import { defaultListOptions } from '../../services/Filters/listOptions'
 
 const PersonListWithDataAndSpinner =

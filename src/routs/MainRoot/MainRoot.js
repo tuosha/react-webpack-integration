@@ -3,6 +3,7 @@ import App from '../../components/App/App'
 import RouterErrorPage from '../RouterErrorPage/RouterErrorPage'
 import PersonsList from '../../components/PersonsList/PersonsList'
 import PlanetsList from '../../components/PlanetsList/PlanetsList'
+import { BaseTable } from '../../components/BaseTable/BaseTable'
 
 const router = createBrowserRouter([
 	{
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
 			{
 				path: 'persons',
 				element: <PersonsList/>,
+			},
+			{
+				path: 'table',
+				element: <BaseTable/>,
 			},
 			{
 				path: 'planets',

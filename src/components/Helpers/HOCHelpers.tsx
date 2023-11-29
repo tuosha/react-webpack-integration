@@ -1,5 +1,5 @@
 import  { FC, useState, useEffect } from 'react'
-import { DataType, GetData, OptionsType, TypedObject } from "../PropsTypesModel/PropsTypesModel";
+import {DataType, GetData, OptionsTypeProps, TypedObject} from "../PropsTypesModel/PropsTypesModel";
 
 const withData = (getData: GetData) => <WP,>(View: FC<WP>) => {
     const Wrapped: FC = (props: WP & DataType) => {
@@ -45,7 +45,7 @@ const withSpinner = <WP,>(Spinner: FC) => (View: FC<WP>) => {
     return Wrapped
 }
 
-const withListOptions = (options: OptionsType) => <WP,>(View: FC<WP>) => {
+const withListOptions = (options: OptionsTypeProps) => <WP,>(View: FC<WP>) => {
     const Wrapped: FC = (props: WP) => <View {...props} options={options}/>
     return Wrapped
 }

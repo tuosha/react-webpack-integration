@@ -37,12 +37,12 @@ const UseEffectsHook = () => {
 		}
 	}, [count])
 	return (
-	  <div className={'use-effects'}>
-		  <span>{count}</span>
-		  <p ref={msgRef} className={'use-effects_msg ' + style}>{msg ? msg : ''}</p>
-		  <button onClick={handleIncrease}>Increase Count</button>
-		  <button onClick={handleDecrease}>Decrease Count</button>
-	  </div>
+	<div className={'use-effects'}>
+		<span>{count}</span>
+		<p ref={msgRef} className={'use-effects_msg ' + style}>{msg ? msg : ''}</p>
+		<button onClick={handleIncrease}>Increase Count</button>
+		<button onClick={handleDecrease}>Decrease Count</button>
+	</div>
 	)
 }
 

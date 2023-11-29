@@ -9,6 +9,7 @@ const getDataApiFromServer = async (url) => {
     }
     return response.json()
 }
+
 const getAllPersons = async () => {
 	const persons = await getDataApiFromServer(_personsUrl)
 	return persons.results.map(_transformPersonData)

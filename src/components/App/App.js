@@ -6,7 +6,7 @@ const App = () => {
 	return (
 		<>
 			<header className="app-header">
-				<HeaderNavigation/>
+				<HeaderNavigation />
 			</header>
 			<main>
 				<section>
